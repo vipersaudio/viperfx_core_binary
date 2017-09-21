@@ -7,10 +7,11 @@
 4、当你对本仓库的内容以任何形式重分发时，请携带这里所述的所有内容，确保使用者或接收者明确这些条款。<br>
 <br>
 当前支持的操作系统和平台：<br>
-待完成...<br>
+x86_64 Linux，libc.so.6<br>
+待增加...<br>
 <br>
 参考使用实例：<br>
-待完成...<br>
+待增加...<br>
 <br>
 <br>
 This repository contains the ViPER FX core which supports various operating systems and platforms.<br>
@@ -21,7 +22,8 @@ Please be sure to read the following terms when using the ViPER FX core:<br>
 4. When you redistribute the contents of this repository in any form, please bring all of the contents described here to ensure that the users or recipients specify these terms.<br>
 <br>
 Currently supported operating systems and platforms:<br>
-TO BE FILLED.<br>
+x86_64 Linux，libc.so.6<br>
+TO BE ADDED.<br>
 <br>
 Reference examples:<br>
-TO BE FILLED.<br>
+TO BE ADDED.<br>
