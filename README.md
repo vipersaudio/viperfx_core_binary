@@ -9,21 +9,19 @@
 当前支持的操作系统和平台：<br>
 x86_64 Linux，libc.so.6<br>
 待增加...<br>
-<br>
 参考使用实例：<br>
-待增加...<br>
+gst-plugin-viperfx, https://github.com/vipersaudio/gst-plugin-viperfx<br>
 <br>
 <br>
 This repository contains the ViPER FX core which supports various operating systems and platforms.<br>
 Please be sure to read the following terms when using the ViPER FX core:<br>
-1. The ViPER FX cores are all in formed of binary, so MUST NOT use it under GPL license.<br>
-2. The ViPER FX cores are all restrict disallowed in commercial use (exclude nonprofit charities).<br>
-3. Please add a copyright information ("Copyright (C) 2010-2017 ViPER ACOUSTICS") of the ViPER FX core in your software when you use it.<br>
-4. When you redistribute the contents of this repository in any form, please bring all of the contents described here to ensure that the users or recipients specify these terms.<br>
+1.The ViPER FX cores are all in formed of binary, so MUST NOT use it under GPL license.<br>
+2.The ViPER FX cores are all restrict disallowed in commercial use (exclude nonprofit charities).<br>
+3.Please add a copyright information ("Copyright (C) 2010-2017 ViPER ACOUSTICS") of the ViPER FX core in your software when you use it.<br>
+4.When you redistribute the contents of this repository in any form, please bring all of the contents described here to ensure that the users or recipients specify these terms.<br>
 <br>
 Currently supported operating systems and platforms:<br>
 x86_64 Linux，libc.so.6<br>
 TO BE ADDED.<br>
-<br>
 Reference examples:<br>
-TO BE ADDED.<br>
+gst-plugin-viperfx, https://github.com/vipersaudio/gst-plugin-viperfx<br>
