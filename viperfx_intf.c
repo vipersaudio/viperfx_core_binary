@@ -3,30 +3,16 @@
 #include <string.h>
 #include "viperfx_intf.h"
 
-/*
-#define ViPERFX_ENTRYPOINT "viperfx_create_instance"
-
-fn_viperfx_ep query_viperfx_entrypoint (void * handle)
-{
-  if (handle == NULL)
-    return NULL;
-  return (fn_viperfx_ep)dlsym (
-      handle, ViPERFX_ENTRYPOINT);
-}*/
-
 int viperfx_command_set_px4_vx4x1 (viperfx_interface * intf,
 	int32_t param, int32_t value)
 {
   int32_t cmd_data[3];
   cmd_data[0] = param;
-  cmd_data[1] = sizeof(int32_t) * 1;
+  cmd_data[1] = sizeof(int32_t);
   cmd_data[2] = value;
 
-  if (intf->command (intf, COMMAND_CODE_SET,
-    sizeof(cmd_data), cmd_data, NULL, NULL) != 0) {
-    return FALSE;
-  }
-  return TRUE;
+  return (!intf->command (intf, COMMAND_CODE_SET,
+    sizeof(cmd_data), cmd_data, NULL, NULL));
 }
 
 int viperfx_command_set_px4_vx4x2 (viperfx_interface * intf,
@@ -34,15 +20,12 @@ int viperfx_command_set_px4_vx4x2 (viperfx_interface * intf,
 {
   int32_t cmd_data[4];
   cmd_data[0] = param;
-  cmd_data[1] = sizeof(int32_t) * 2;
+  cmd_data[1] = sizeof(int32_t) << 1;
   cmd_data[2] = value_l;
   cmd_data[3] = value_h;
 
-  if (intf->command (intf, COMMAND_CODE_SET,
-    sizeof(cmd_data), cmd_data, NULL, NULL) != 0) {
-    return FALSE;
-  }
-  return TRUE;
+  return (!intf->command (intf, COMMAND_CODE_SET,
+    sizeof(cmd_data), cmd_data, NULL, NULL));
 }
 
 int viperfx_command_set_px4_vx4x3 (viperfx_interface * intf,
@@ -55,11 +38,8 @@ int viperfx_command_set_px4_vx4x3 (viperfx_interface * intf,
   cmd_data[3] = value_h;
   cmd_data[4] = value_e;
 
-  if (intf->command (intf, COMMAND_CODE_SET,
-    sizeof(cmd_data), cmd_data, NULL, NULL) != 0) {
-    return FALSE;
-  }
-  return TRUE;
+  return (!intf->command (intf, COMMAND_CODE_SET,
+    sizeof(cmd_data), cmd_data, NULL, NULL));
 }
 
 int viperfx_command_set_ir_path (viperfx_interface * intf,
@@ -67,20 +47,18 @@ int viperfx_command_set_ir_path (viperfx_interface * intf,
 {
   char cmd_data[4 + 256];
   int32_t * cmd_data_int = (int32_t *)cmd_data;
-
-  if (strlen (pathname) >= 256)
+  int32_t pathlen = (int32_t) strlen(pathname);
+	
+  if (pathlen >= 256)
     return FALSE;
 
   memset (cmd_data, 0, sizeof(cmd_data));
   cmd_data_int[0] = PARAM_HPFX_CONV_UPDATEKERNEL;
   cmd_data_int[1] = 256;
-  cmd_data_int[2] = (int32_t)strlen (pathname);
+  cmd_data_int[2] = pathlen;
   memcpy (&cmd_data_int[3],
-      pathname, strlen (pathname));
+      pathname, pathlen);
 
-  if (intf->command (intf, COMMAND_CODE_SET,
-    sizeof(cmd_data), cmd_data, NULL, NULL) != 0) {
-      return FALSE;
-  }
-  return TRUE;
+  return (!intf->command (intf, COMMAND_CODE_SET,
+    sizeof(cmd_data), cmd_data, NULL, NULL));
 }
