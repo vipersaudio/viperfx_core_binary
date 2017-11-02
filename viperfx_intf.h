@@ -10,6 +10,11 @@
 #define FALSE 0
 #endif
 
+#define VIPERFX_LOAD(xfilename) (dlopen(xfilename,RTLD_NOW))
+#define VIPERFX_UNLOAD(xhandle) (dlclose(xhandle))
+#define VIPERFX_ENTRYPOINT(xhandle) \
+	((fn_viperfx_ep)(dlsym(xhandle,"viperfx_create_instance")))
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -172,22 +177,25 @@ enum
 typedef struct _viperfx_interface {
   int32_t (*set_samplerate) (
       struct _viperfx_interface * __this, int32_t sample_rate);
+	
   int32_t (*set_channels) (
       struct _viperfx_interface * __this, int32_t channels);
+	
   void (*reset) (struct _viperfx_interface * __this);
+	
   int32_t (*command) (struct _viperfx_interface * __this,
       uint32_t cmd_code, uint32_t cmd_size, void * cmd_data,
       uint32_t * reply_size, void * reply_data);
+	
   void (*process) (struct _viperfx_interface * __this,
       int16_t * pcm_buffer, int32_t frame_count);
+	
   void (*release) (struct _viperfx_interface * __this);
 
   void * private_data;
 } viperfx_interface;
 
 typedef viperfx_interface* (*fn_viperfx_ep)(void);
-
-fn_viperfx_ep query_viperfx_entrypoint (void * handle);
 
 int viperfx_command_set_px4_vx4x1 (viperfx_interface * intf,
 	int32_t param, int32_t value);
